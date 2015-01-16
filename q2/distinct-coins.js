@@ -53,6 +53,7 @@ var main = function (penceString) {
     return distinctCoins.getTotal();
   }
   catch (error) {
+    console.error(error);
     return '';
   }
 };
