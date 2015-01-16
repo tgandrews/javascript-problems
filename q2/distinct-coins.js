@@ -2,28 +2,22 @@ var coins = [200, 100, 50, 20, 10, 5, 2, 1];
 
 var DistinctCoins = function (penceString) {
   this._combinations = {};
-  this._isNumeric = false;
 
-  var penceValue = 0;
-  if (penceString.length > 0) {
-     var parsedValue = parseInt(penceString);
-     if (!isNaN(parsedValue) && isFinite(parsedValue)) {
-       this._isNumeric = true;
-       penceValue = parsedValue;
-     }
+  if (penceString.length < 1) {
+    throw new Error('Empty pence string provided');
   }
 
-  this._pence = penceValue;
+  var parsedValue = parseInt(penceString);
+  if (isNaN(parsedValue) || !isFinite(parsedValue)) {
+    throw new Error('Non numeric pence string provided');
+  }
+
+  this._pence = parsedValue;
 };
 
 DistinctCoins.prototype.getTotal = function () {
-  if (this._isNumeric) {
-    this._calculate(this._pence, []);
-    return Object.keys(this._combinations).length;
-  }
-  else {
-    return '';
-  }
+  this._calculate(this._pence, []);
+  return Object.keys(this._combinations).length;
 };
 
 DistinctCoins.prototype._calculate = function (pence, coinSequence) {
@@ -53,9 +47,14 @@ DistinctCoins.prototype._calculate = function (pence, coinSequence) {
   }
 };
 
-var main = function (line) {
-  var distinctCoins = new DistinctCoins(line);
-  return distinctCoins.getTotal();
+var main = function (penceString) {
+  try {
+    var distinctCoins = new DistinctCoins(penceString);
+    return distinctCoins.getTotal();
+  }
+  catch (error) {
+    return '';
+  }
 };
 
 
