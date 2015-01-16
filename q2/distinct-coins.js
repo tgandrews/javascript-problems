@@ -2,7 +2,12 @@ var coins = [200, 100, 50, 20, 10, 5, 2, 1];
 
 var DistinctCoins = function (penceString) {
   this._combinations = {};
-  this._pence = parseInt(penceString);
+  if (penceString.length > 0) {
+    this._pence = parseInt(penceString);
+  }
+  else {
+    this._pence = 0;
+  }
 };
 
 DistinctCoins.prototype.getTotal = function () {
@@ -37,9 +42,14 @@ DistinctCoins.prototype._calculate = function (pence, coinSequence) {
   }
 };
 
-var main = function (pence) {
-  var distinctCoins = new DistinctCoins(pence);
-  return distinctCoins.getTotal();
+var main = function (line) {
+  if (line.length > 0) {
+    var distinctCoins = new DistinctCoins(line);
+    return distinctCoins.getTotal();
+  }
+  else {
+    return '';
+  }
 };
 
 
