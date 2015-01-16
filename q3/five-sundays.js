@@ -70,6 +70,10 @@ var main = function (line) {
 
   var startDate,endDate;
   try {
+    if (splitData.length !== 4) {
+      throw new Error('Expecting data in the form \'Month Year Month Year\'');
+    }
+
     startDate = createDate(splitData[0], splitData[1], false);
     endDate = createDate(splitData[2], splitData[3], true);
 

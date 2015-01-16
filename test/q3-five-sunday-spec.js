@@ -21,4 +21,22 @@ describe('Five Sundays', function () {
     var result = fiveSundays(input);
     should(result).equal('');
   });
+
+  it('returns blank string when there are missing parameters', function () {
+    var input = 'May December 2013';
+    var result = fiveSundays(input);
+    should(result).equal('');
+  });
+
+  it('returns a blank string when there is an invalid month', function () {
+    var input = 'Hello 2013 World 2014';
+    var result = fiveSundays(input);
+    should(result).equal('');
+  });
+
+  it('returns a blank string when there is an invalid year', function () {
+    var input = 'May Year Jan Year';
+    var result = fiveSundays(input);
+    should(result).equal('');
+  });
 });
