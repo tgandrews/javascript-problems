@@ -20,4 +20,9 @@ describe('Distinct coins', function () {
     var result = distinctCoins('5');
     should(result).equal(4);
   });
+
+  it('returns blank string for NaN input', function () {
+    var result = distinctCoins('');
+    should(result).equal('');
+  });
 });

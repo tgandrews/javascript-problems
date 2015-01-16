@@ -2,17 +2,28 @@ var coins = [200, 100, 50, 20, 10, 5, 2, 1];
 
 var DistinctCoins = function (penceString) {
   this._combinations = {};
+  this._isNumeric = false;
+
+  var penceValue = 0;
   if (penceString.length > 0) {
-    this._pence = parseInt(penceString);
+     var parsedValue = parseInt(penceString);
+     if (!isNaN(parsedValue) && isFinite(parsedValue)) {
+       this._isNumeric = true;
+       penceValue = parsedValue;
+     }
   }
-  else {
-    this._pence = 0;
-  }
+
+  this._pence = penceValue;
 };
 
 DistinctCoins.prototype.getTotal = function () {
-  this._calculate(this._pence, []);
-  return Object.keys(this._combinations).length;
+  if (this._isNumeric) {
+    this._calculate(this._pence, []);
+    return Object.keys(this._combinations).length;
+  }
+  else {
+    return '';
+  }
 };
 
 DistinctCoins.prototype._calculate = function (pence, coinSequence) {
@@ -43,13 +54,8 @@ DistinctCoins.prototype._calculate = function (pence, coinSequence) {
 };
 
 var main = function (line) {
-  if (line.length > 0) {
-    var distinctCoins = new DistinctCoins(line);
-    return distinctCoins.getTotal();
-  }
-  else {
-    return '';
-  }
+  var distinctCoins = new DistinctCoins(line);
+  return distinctCoins.getTotal();
 };
 
 
