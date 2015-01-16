@@ -2,12 +2,11 @@ var coins = [200, 100, 50, 20, 10, 5, 2, 1];
 
 var DistinctCoins = function (penceString) {
   this._combinations = {};
-
-  var pence = parseInt(penceString);
-  this._calculate(pence, []);
+  this._pence = parseInt(penceString);
 };
 
 DistinctCoins.prototype.getTotal = function () {
+  this._calculate(this._pence, []);
   return Object.keys(this._combinations).length;
 };
 
