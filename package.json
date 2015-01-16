@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "mocha": "^2.1.0",
-    "should": "^4.6.0"
+    "should": "^4.6.0",
+    "use-strict": "^1.0.0"
   }
 }
