@@ -48,14 +48,15 @@ DistinctCoins.prototype._calculate = function (pence, coinSequence) {
 };
 
 var main = function (penceString) {
+  var distinctCoins;
   try {
-    var distinctCoins = new DistinctCoins(penceString);
-    return distinctCoins.getTotal();
+     distinctCoins = new DistinctCoins(penceString);
   }
   catch (error) {
     console.error(error);
     return '';
   }
+  return distinctCoins.getTotal();
 };
 
 
