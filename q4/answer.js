@@ -1,5 +1,5 @@
 require('use-strict');
 var lineExecutor = require('../lib/line-executor'),
-  distinctXToY = require('./distinct-x-to-y');
+  distinctPowers = require('./distinct-powers');
 
-lineExecutor(distinctXToY);
+lineExecutor(distinctPowers);
