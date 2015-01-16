@@ -1,6 +1,6 @@
 require('use-strict');
 
-var lineExecutor = require('../lib/line-executor');
-var lineReverser = require('./line-reverser');
+var lineExecutor = require('../lib/line-executor'),
+  lineReverser = require('./line-reverser');
 
 lineExecutor(lineReverser);
